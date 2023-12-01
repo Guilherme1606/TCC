@@ -1,0 +1,46 @@
+unit Due.Utilitarios.Base.Repository;
+
+interface
+
+Uses
+  Spring.Container;
+
+type
+  TBaseRepository = class(TInterfacedObject)
+  private
+  public
+    function Resolve<T>: T;
+    procedure EnviarLogErro(aMensagem: string); overload;
+    procedure EnviarLogAviso(aMensagem: string); overload;
+    procedure EnviarLogInformacao(aMensagem: string); overload;
+  end;
+
+implementation
+
+uses
+  Prx.Utilitarios.Observability.Interfaces,
+  Prx.Utilitarios.Observability.Types;
+
+{ TBaseRepository }
+
+procedure TBaseRepository.EnviarLogAviso(aMensagem: string);
+begin
+  vcObservabilityService.Enviar(Aviso, aMensagem);
+end;
+
+procedure TBaseRepository.EnviarLogErro(aMensagem: string);
+begin
+  vcObservabilityService.Enviar(Erro, aMensagem);
+end;
+
+procedure TBaseRepository.EnviarLogInformacao(aMensagem: string);
+begin
+  vcObservabilityService.Enviar(Informacao, aMensagem);
+end;
+
+function TBaseRepository.Resolve<T>: T;
+begin
+  result := GlobalContainer.Resolve<T>;
+end;
+
+end.

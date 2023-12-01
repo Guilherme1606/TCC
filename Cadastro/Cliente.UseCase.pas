@@ -1,0 +1,73 @@
+unit Cliente.UseCase;
+
+interface
+uses
+  Due.Utilitarios.Base.UseCase,
+  Due.Utilitarios.Base.Types,
+  Cliente.Interfaces,
+  DueIConexao,
+  Due.Utilitarios.Base.Model,
+  Vcl.Dialogs,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  TClientesUseCase = class(TBaseUseCase, IClientesUseCase)
+  private
+    FRepository: IClientesRepository;
+    FConexao: IConexao;
+  public
+    function Gravar(aModel: IClientesModel): TValidacao;
+    function Excluir(aModel: IClientesModel): TValidacao;
+    function RetornaClientes: TFDDataSet;
+    function BuscaClientes(aModel: IClientesModel): TFDDataSet;
+    constructor Create(aRepository: IClientesRepository;
+      aConexao: IConexao);
+
+  end;
+implementation
+
+{ TTelaDeLoginUseCase }
+
+constructor TClientesUseCase.Create(aRepository: IClientesRepository;
+  aConexao: IConexao);
+begin
+  FRepository := aRepository;
+  FConexao := aConexao;
+end;
+
+function TClientesUseCase.Excluir(aModel: IClientesModel): TValidacao;
+begin
+  FConexao.StartTransaction(FOrigemTransacao);
+  result := FRepository.Excluir(aModel);
+  if result.Valido then
+    FConexao.Commit
+  else
+    FConexao.Rollback;
+end;
+
+function TClientesUseCase.Gravar(aModel: IClientesModel): TValidacao;
+begin
+  FConexao.StartTransaction(FOrigemTransacao);
+  If aModel.NovoRegistro Then
+    result := FRepository.Inserir(aModel)
+  Else
+    result := FRepository.Atualizar(aModel);
+
+  if result.Valido then
+    FConexao.Commit
+  else
+    FConexao.Rollback;
+end;
+
+function TClientesUseCase.BuscaClientes(aModel: IClientesModel): TFDDataSet;
+begin
+  result := FRepository.BuscaClientes(aModel);
+end;
+
+function TClientesUseCase.RetornaClientes: TFDDataSet;
+begin
+  result := FRepository.RetornaClientes;
+end;
+
+end.

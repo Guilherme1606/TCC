@@ -1,0 +1,58 @@
+unit Cliente.Model;
+
+interface
+
+uses
+  Cliente.Interfaces,
+  Due.Utilitarios.Base.Model;
+
+type
+  TClientesModel = class(TBaseModel, IClientesModel)
+  private
+    FCPF: String;
+    FNome_Completo: String;
+    FEndereco: String;
+    FNumero: Integer;
+    FBairro: String;
+    FCep: Integer;
+    FMunicio: String;
+    FUF: String;
+    FContato: String;
+    FNovoRegistro: Boolean;
+
+    function GetCPF: String;
+    function GetNome_Completo: String;
+    function GetEndereco: String;
+    function GetNumero: Integer;
+    function GetBairro: String;
+    function GetCep: Integer;
+    function GetMunicipio: String;
+    function GetUF: String;
+    function GetContato: String;
+    function GetNovoRegistro: Boolean;
+
+    procedure SetCPF(const Value: String);
+    procedure SetNome_Completo(const Value: String);
+    procedure SetEndereco(const Value: String);
+    procedure SetNumero(const Value: Integer);
+    procedure SetBairro(const Value: String);
+    procedure SetCep(Const Value: Integer);
+    procedure SetMunicipio(const Value: String);
+    procedure SetUF(const Value: String);
+    procedure SetContato(const Value: String);
+    procedure SetNovoRegistro(const Value: Boolean);
+  public
+    property CPF: String read GetCPF write SetCPF;
+    property Nome_Completo: String read GetNome_Completo write SetNome_Completo;
+    property Endereco: String read GetEndereco write SetEndereco;
+    property Numero: Integer read GetNumero write SetNumero;
+    property Bairro: String read GetBairro write SetBairro;
+    property Cep: Integer read GetCep write SetCep;
+    property Municipio: String read GetMunicipio write SetMunicipio;
+    property NovoRegistro: Boolean read GetNovoRegistro write SetNovoRegistro;
+
+  end;
+
+implementation
+
+end.

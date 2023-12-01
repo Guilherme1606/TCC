@@ -1,0 +1,25 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 291
+  Width = 426
+  object FDConnection1: TFDConnection
+    ConnectionName = 'DbDue'
+    Params.Strings = (
+      'Database=ORA11G64'
+      'User_Name=BBTT230209'
+      'Password=BBTT230209'
+      'DriverID=Ora')
+    LoginPrompt = False
+    Left = 48
+    Top = 16
+  end
+  object FDPhysFBDriverLink1: TFDPhysFBDriverLink
+    Left = 128
+    Top = 16
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 224
+    Top = 16
+  end
+end

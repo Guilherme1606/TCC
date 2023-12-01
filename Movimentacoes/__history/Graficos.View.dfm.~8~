@@ -1,0 +1,134 @@
+inherited Graficos: TGraficos
+  Left = 319
+  Top = 180
+  Caption = 'Gr'#225'ficos de Receita'
+  ClientHeight = 424
+  ClientWidth = 500
+  Position = poDesigned
+  OnShow = FormShow
+  ExplicitWidth = 500
+  ExplicitHeight = 424
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PainelCentral: TPanel
+    Width = 500
+    Height = 367
+    ExplicitWidth = 500
+    ExplicitHeight = 367
+    object SpeedButton1: TSpeedButton
+      Left = 468
+      Top = 1
+      Width = 28
+      Height = 22
+      Cursor = crHandPoint
+      Caption = 'X'
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGray
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = SpeedButton1Click
+    end
+    object DBChart1: TDBChart
+      Left = 0
+      Top = 0
+      Width = 500
+      Height = 367
+      Title.Text.Strings = (
+        'TDBChart')
+      View3DOptions.Elevation = 315
+      View3DOptions.Orthogonal = False
+      View3DOptions.Perspective = 0
+      View3DOptions.Rotation = 360
+      Align = alClient
+      BevelOuter = bvNone
+      Color = 3748910
+      TabOrder = 0
+      ExplicitLeft = 11
+      ExplicitTop = 90
+      ExplicitWidth = 739
+      ExplicitHeight = 358
+      DefaultCanvas = 'TGDIPlusCanvas'
+      ColorPaletteIndex = 13
+      object Series1: TPieSeries
+        XValues.Order = loAscending
+        YValues.Name = 'Pie'
+        YValues.Order = loNone
+        Frame.InnerBrush.BackColor = clRed
+        Frame.InnerBrush.Gradient.EndColor = clGray
+        Frame.InnerBrush.Gradient.MidColor = clWhite
+        Frame.InnerBrush.Gradient.StartColor = 4210752
+        Frame.InnerBrush.Gradient.Visible = True
+        Frame.MiddleBrush.BackColor = clYellow
+        Frame.MiddleBrush.Gradient.EndColor = 8553090
+        Frame.MiddleBrush.Gradient.MidColor = clWhite
+        Frame.MiddleBrush.Gradient.StartColor = clGray
+        Frame.MiddleBrush.Gradient.Visible = True
+        Frame.OuterBrush.BackColor = clGreen
+        Frame.OuterBrush.Gradient.EndColor = 4210752
+        Frame.OuterBrush.Gradient.MidColor = clWhite
+        Frame.OuterBrush.Gradient.StartColor = clSilver
+        Frame.OuterBrush.Gradient.Visible = True
+        Frame.Width = 4
+        OtherSlice.Legend.Visible = False
+      end
+    end
+  end
+  inherited PainelBaixo: TPanel
+    Top = 367
+    Width = 500
+    ExplicitTop = 367
+    ExplicitWidth = 500
+  end
+  object ConsultaContrato: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 316
+    Top = 57
+    object ConsultaContratoID_CONTRATO: TIntegerField
+      FieldName = 'ID_CONTRATO'
+    end
+    object ConsultaContratoCPF: TStringField
+      FieldName = 'CPF'
+      Size = 11
+    end
+    object ConsultaContratoSERVICO: TStringField
+      FieldName = 'SERVICO'
+      Size = 25
+    end
+    object ConsultaContratoINICIO: TStringField
+      FieldName = 'INICIO'
+      Size = 9
+    end
+    object ConsultaContratoENTREGA: TStringField
+      FieldName = 'ENTREGA'
+      Size = 9
+    end
+    object ConsultaContratoVALOR: TFloatField
+      FieldName = 'VALOR'
+    end
+    object ConsultaContratoSTATUS: TStringField
+      FieldName = 'STATUS'
+      Size = 12
+    end
+    object ConsultaContratoUSUARIO_RESPONSAVEL: TStringField
+      FieldName = 'USUARIO_RESPONSAVEL'
+      Size = 10
+    end
+    object ConsultaContratoUSUARIO: TStringField
+      FieldName = 'USUARIO'
+      Size = 10
+    end
+    object ConsultaContratoUSU: TStringField
+      FieldName = 'USU'
+      Size = 10
+    end
+  end
+end

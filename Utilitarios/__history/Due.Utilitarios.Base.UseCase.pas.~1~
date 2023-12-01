@@ -1,0 +1,64 @@
+unit Due.Utilitarios.Base.UseCase;
+
+interface
+
+uses
+   Spring.Container
+ , Prx.Utilitarios.Base.Types;
+
+type
+  TBaseUseCase = class(TInterfacedObject)
+  private
+    procedure SetOrigemTransacao(const Value: TEnumOrigemTransacao);
+    function GetOrigemTransacao : TEnumOrigemTransacao;
+  public
+    FOrigemTransacao: TEnumOrigemTransacao;
+    function Resolve<T>: T;
+    property OrigemTransacao : TEnumOrigemTransacao
+       read GetOrigemTransacao write SetOrigemTransacao;
+
+    procedure EnviarLogErro(aMensagem: string); overload;
+    procedure EnviarLogAviso(aMensagem: string); overload;
+    procedure EnviarLogInformacao(aMensagem: string); overload;
+  end;
+
+implementation
+
+uses
+  Prx.Utilitarios.Observability.Interfaces,
+  Prx.Utilitarios.Observability.Types;
+
+{ TBaseUseCase }
+
+function TBaseUseCase.Resolve<T>: T;
+begin
+  result := GlobalContainer.Resolve<T>;
+end;
+
+procedure TBaseUseCase.SetOrigemTransacao(const Value: TEnumOrigemTransacao);
+begin
+  FOrigemTransacao := Value;
+end;
+
+
+procedure TBaseUseCase.EnviarLogAviso(aMensagem: string);
+begin
+  vcObservabilityService.Enviar(Aviso, aMensagem);
+end;
+
+procedure TBaseUseCase.EnviarLogErro(aMensagem: string);
+begin
+  vcObservabilityService.Enviar(Erro, aMensagem);
+end;
+
+procedure TBaseUseCase.EnviarLogInformacao(aMensagem: string);
+begin
+  vcObservabilityService.Enviar(Informacao, aMensagem);
+end;
+
+function TBaseUseCase.GetOrigemTransacao : TEnumOrigemTransacao;
+begin
+  result :=  FOrigemTransacao;
+end;
+
+end.

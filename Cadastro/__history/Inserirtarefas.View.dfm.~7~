@@ -1,0 +1,19 @@
+object TInserirTarefas: TTInserirTarefas
+  Left = 313
+  Top = 200
+  BorderIcons = [biSystemMenu]
+  Caption = 'Cadastro de Tarefas'
+  ClientHeight = 404
+  ClientWidth = 509
+  Color = clBtnFace
+  DefaultMonitor = dmDesktop
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesigned
+  PixelsPerInch = 96
+  TextHeight = 13
+end

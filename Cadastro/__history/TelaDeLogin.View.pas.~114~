@@ -1,0 +1,138 @@
+unit TelaDeLogin.View;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  FormularioBase.View,
+  Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage,
+  JvExControls,
+  JvXPCore,
+  JvXPButtons,
+  Praxio.Botoes.SimpleButton,
+  Vcl.StdCtrls,
+  TelaDeLogin.Interfaces,
+  Vcl.Buttons;
+
+type
+  TTTelaDeLoginView = class(TFormularioBase)
+    PainelLogin: TPanel;
+    LabelUsuario: TLabel;
+    LabelSenha: TLabel;
+    EdtUsuarioLogin: TEdit;
+    Shape2: TShape;
+    Image1: TImage;
+    EdtSenhaLogin: TEdit;
+    Shape3: TShape;
+    Label1: TLabel;
+    Label2: TLabel;
+    PainelCadastro: TPanel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Shape4: TShape;
+    Shape5: TShape;
+    EdtUsuario: TEdit;
+    EdtNomeCompleto: TEdit;
+    EdtEmail: TEdit;
+    EdtSenha: TEdit;
+    Shape7: TShape;
+    Shape8: TShape;
+    Label5: TLabel;
+    Label6: TLabel;
+    Painel: TPanel;
+    Button1: TButton;
+    Label7: TLabel;
+    BotaoCadastrarUsuario: TButton;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
+    procedure BotaoLoginClick(Sender: TObject);
+    procedure BotaoCadastrarClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure BotaoCadastrarUsuarioClick(Sender: TObject);
+  private
+    FTelaDeLoginUseCase: ITelaDeLoginUseCase;
+    FTelaDeLoginModel: ITelaDeLoginModel;
+  public
+    { Public declarations }
+  end;
+
+var
+  TTelaDeLoginView: TTTelaDeLoginView;
+const
+     olMailItem = 0;
+implementation
+uses
+  Menu_Principal,
+  Due.Funcoes.Utilitarios;
+{$R *.dfm}
+
+
+procedure TTTelaDeLoginView.BotaoCadastrarUsuarioClick(Sender: TObject);
+  procedure CadastroUsuario;
+  begin
+    FTelaDeLoginModel.Usuario         := EdtUsuario.text;
+    FTelaDeLoginModel.Nome_Completo   := EdtNomeCompleto.text;
+    FTelaDeLoginModel.Email           := EdtEmail.text;
+    FTelaDeLoginModel.Senha           := EdtSenha.text;
+    FTelaDeLoginModel.NovoRegistro    := true;
+
+    var Retorno := FTelaDeLoginUseCase.Gravar(FTelaDeLoginModel);
+
+    if Retorno.Valido then
+      ShowMessage(Retorno.Mensagem)
+    else
+      ShowMessage(Retorno.Mensagem);
+  end;
+
+begin
+  Painel.Left := 0;
+  Painel.Width:= 295;
+  CadastroUsuario;
+end;
+
+procedure TTTelaDeLoginView.BotaoLoginClick(Sender: TObject);
+begin
+  showmessage('login ainda nao implementado');
+end;
+
+procedure TTTelaDeLoginView.Button1Click(Sender: TObject);
+begin
+  FTelaDeLoginModel.Usuario := EdtUsuarioLogin.Text;
+  FTelaDeLoginModel.Senha   := EdtSenhaLogin.Text;
+  var resultado := FTelaDeLoginUseCase.ValidaUsuarioLogin(FTelaDeLoginModel);
+
+  if resultado.Valido then
+  begin
+    abrirtela(TTMenu_Principal);
+  end
+  else
+   showmessage(resultado.Mensagem);
+end;
+
+procedure TTTelaDeLoginView.FormCreate(Sender: TObject);
+begin
+  inherited;
+  FTelaDeLoginUseCase:= Resolve<ITelaDeLoginUseCase>;
+  FTelaDeLoginModel  := Resolve<ITelaDeLoginModel>;
+end;
+
+procedure TTTelaDeLoginView.Label1Click(Sender: TObject);
+begin
+  inherited;
+  Painel.Left := PainelLogin.Left;
+  Painel.Width:= PainelLogin.Width;
+end;
+
+end.

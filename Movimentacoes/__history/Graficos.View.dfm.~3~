@@ -1,0 +1,41 @@
+inherited Graficos: TGraficos
+  Left = 319
+  Top = 180
+  Caption = 'Gr'#225'ficos de Receita'
+  ClientHeight = 424
+  ClientWidth = 500
+  Position = poDesigned
+  ExplicitWidth = 500
+  ExplicitHeight = 424
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PainelCentral: TPanel
+    Width = 500
+    Height = 367
+    ExplicitLeft = 0
+    ExplicitWidth = 440
+    ExplicitHeight = 255
+    object SpeedButton1: TSpeedButton
+      Left = 468
+      Top = 1
+      Width = 28
+      Height = 22
+      Cursor = crHandPoint
+      Caption = 'X'
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGray
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = SpeedButton1Click
+    end
+  end
+  inherited PainelBaixo: TPanel
+    Top = 367
+    Width = 500
+    ExplicitTop = 255
+    ExplicitWidth = 440
+  end
+end

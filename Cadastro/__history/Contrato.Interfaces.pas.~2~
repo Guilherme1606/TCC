@@ -1,0 +1,61 @@
+unit Contrato.Interfaces;
+
+interface
+uses
+  Due.Utilitarios.Base.Types,
+  system.generics.Collections,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  IContratosModel = interface
+    ['{7CB1A6C5-A6A5-429D-B028-46B627CDB84C}']
+    function GetCPF: String;
+    function GetNome_Completo: String;
+    function GetEndereco: String;
+    function GetNumero: Integer;
+    function GetBairro: String;
+    function GetCep: Integer;
+    function GetMunicipio: String;
+    function GetUF: String;
+    function GetContato: String;
+    function GetNovoRegistro: Boolean;
+
+    procedure SetCPF(const Value: String);
+    procedure SetNome_Completo(const Value: String);
+    procedure SetEndereco(const Value: String);
+    procedure SetNumero(const Value: Integer);
+    procedure SetBairro(const Value: String);
+    procedure SetCep(Const Value: Integer);
+    procedure SetMunicipio(const Value: String);
+    procedure SetUF(const Value: String);
+    procedure SetContato(const Value: String);
+    procedure SetNovoRegistro(const Value: Boolean);
+
+    property CPF: String read GetCPF write SetCPF;
+    property Nome_Completo: String read GetNome_Completo write SetNome_Completo;
+    property Endereco: String read GetEndereco write SetEndereco;
+    property Numero: Integer read GetNumero write SetNumero;
+    property Bairro: String read GetBairro write SetBairro;
+    property Cep: Integer read GetCep write SetCep;
+    property Municipio: String read GetMunicipio write SetMunicipio;
+    property UF: String read GetUF write SetUF;
+    property Contato: String read GetContato write SetContato;
+    property NovoRegistro: Boolean read GetNovoRegistro write SetNovoRegistro;
+  end;
+
+  IContratosUseCase = interface
+    ['{02224097-6016-43F6-BB68-4C44E6112DB8}']
+    function Gravar(aModel: IContratosModel): TValidacao;
+    function Excluir(aModel: IContratosModel): TValidacao;
+  end;
+
+  IContratosRepository = interface
+    ['{05FAB3F7-647E-4F44-81F2-54A69830A9BD}']
+    function Atualizar(aModel: IContratosModel): TValidacao;
+    function Inserir(aModel: IContratosModel): TValidacao;
+    function Excluir(aModel: IContratosModel): TValidacao;
+  end;
+implementation
+
+end.

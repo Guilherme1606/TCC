@@ -1,0 +1,43 @@
+inherited Relatorios: TRelatorios
+  Left = 319
+  Top = 180
+  Caption = 'Relatorios'
+  ClientHeight = 424
+  ClientWidth = 500
+  Position = poDesigned
+  ExplicitWidth = 500
+  ExplicitHeight = 424
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PainelCentral: TPanel
+    Width = 500
+    Height = 367
+    object Label1: TLabel
+      Left = 168
+      Top = 80
+      Width = 33
+      Height = 13
+      Caption = 'Label1'
+    end
+    object SpeedButton1: TSpeedButton
+      Left = 471
+      Top = 0
+      Width = 28
+      Height = 22
+      Cursor = crHandPoint
+      Caption = 'X'
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGray
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = SpeedButton1Click
+    end
+  end
+  inherited PainelBaixo: TPanel
+    Top = 367
+    Width = 500
+  end
+end

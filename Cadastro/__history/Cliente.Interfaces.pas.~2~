@@ -1,0 +1,35 @@
+unit Cliente.Interfaces;
+
+interface
+uses
+  Due.Utilitarios.Base.Types,
+  system.generics.Collections,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+type
+  IClientesModel = interface
+    ['{B5782108-9C03-4F38-A492-86C09E032F78}']
+    function GetID: integer;
+    function GetUsuario: String;
+    function GetNome_Completo: String;
+    function GetEmail: String;
+    function GetSenha: String;
+    function GetNovoRegistro: Boolean;
+
+    procedure SetID(const Value: integer);
+    procedure SetUsuario(const Value: String);
+    procedure SetNome_Completo(const Value: String);
+    procedure SetEmail(const Value: String);
+    procedure SetSenha(const Value: String);
+    procedure SetNovoRegistro(const Value: Boolean);
+
+    property ID: integer read GetID write SetID;
+    property Usuario: String read GetUsuario write SetUsuario;
+    property Nome_Completo: String read GetNome_Completo write SetNome_Completo;
+    property Email: String read GetEmail write SetEmail;
+    property Senha: String read GetSenha write SetSenha;
+    property NovoRegistro: Boolean read GetNovoRegistro write SetNovoRegistro;
+  end;
+implementation
+
+end.

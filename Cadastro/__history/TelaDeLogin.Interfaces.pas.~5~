@@ -1,0 +1,51 @@
+unit TelaDeLogin.Interfaces;
+
+interface
+
+uses
+  Due.Utilitarios.Base.Types,
+  system.generics.Collections,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  IMovimentacaoTelaDeLoginModel = interface
+    ['{348D5DCF-AB08-4F13-864F-8C8D36FC6390}']
+    function GetID: integer;
+    function GetUsuario: String;
+    function GetNome_Completo: String;
+    function GetEmail: String;
+    function GetSenha: String;
+    function GetNovoRegistro: Boolean;
+
+    procedure SetID(const Value: integer);
+    procedure SetUsuario(const Value: String);
+    procedure SetNome_Completo(const Value: String);
+    procedure SetEmail(const Value: String);
+    procedure SetSenha(const Value: String);
+    procedure SetNovoRegistro(const Value: Boolean);
+
+    property ID: integer read GetID write SetID;
+    property Usuario: String read GetUsuario write SetUsuario;
+    property Nome_Completo: String read GetNome_Completo write SetNome_Completo;
+    property Email: String read GetEmail write SetEmail;
+    property Senha: String read GetSenha write SetSenha;
+    property NovoRegistro: Boolean read GetNovoRegistro write SetNovoRegistro;
+  end;
+
+  IMovimentacaoOcorrenciaUseCase = interface
+    ['{BB207074-CA6A-40D4-8A37-FB535949EDBB}']
+    function Gravar(aModel: IMovimentacaoTelaDeLoginModel): TValidacao;
+    function Excluir(aModel: IMovimentacaoTelaDeLoginModel): TValidacao;
+  end;
+
+  IMovimentacaoOcorrenciaRepository = interface
+    ['{6D479101-2536-47DC-8A87-74360BAF3479}']
+    function Atualizar(aModel: IMovimentacaoTelaDeLoginModel): TValidacao;
+    function Inserir(aModel: IMovimentacaoTelaDeLoginModel): TValidacao;
+    function Excluir(aModel: IMovimentacaoTelaDeLoginModel): TValidacao;
+  end;
+
+implementation
+
+end.

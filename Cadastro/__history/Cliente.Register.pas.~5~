@@ -1,0 +1,25 @@
+unit Cliente.Register;
+
+interface
+
+uses
+  Spring.container;
+
+procedure RegisterTypes(Const container: TContainer);
+
+implementation
+
+uses
+  Cliente.Repository,
+  Cliente.UseCase,
+  Cliente.Model;
+
+procedure RegisterTypes(Const container: TContainer);
+begin
+  container.RegisterType<TClientesRepository>;
+  container.RegisterType<TClientesUseCase>;
+  container.RegisterType<TClientesModel>;
+  container.Build;
+end;
+
+end.

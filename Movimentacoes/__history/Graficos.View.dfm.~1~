@@ -1,0 +1,14 @@
+inherited Graficos: TGraficos
+  Caption = 'Graficos'
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PainelCentral: TPanel
+    ExplicitLeft = 0
+    ExplicitWidth = 440
+    ExplicitHeight = 255
+  end
+  inherited PainelBaixo: TPanel
+    ExplicitTop = 255
+    ExplicitWidth = 440
+  end
+end

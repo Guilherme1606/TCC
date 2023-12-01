@@ -1,0 +1,107 @@
+unit TelaDeLogin.Model;
+
+interface
+
+uses
+  TelaDeLogin.Interfaces,
+  Due.Utilitarios.Base.Model;
+
+type
+  TTelaDeLoginModel = class(TBaseModel,
+    ITelaDeLoginModel)
+  private
+    FID: integer;
+    FUsuario: String;
+    FNome_Completo: String;
+    FEmail: String;
+    FSenha: String;
+    FNovoRegistro: Boolean;
+
+    function GetID: integer;
+    function GetUsuario: String;
+    function GetNome_Completo: String;
+    function GetEmail: String;
+    function GetSenha: String;
+    function GetNovoRegistro: Boolean;
+
+    procedure SetID(const Value: integer);
+    procedure SetUsuario(const Value: String);
+    procedure SetNome_Completo(const Value: String);
+    procedure SetEmail(const Value: String);
+    procedure SetSenha(const Value: String);
+    procedure SetNovoRegistro(const Value: Boolean);
+  public
+    property ID: integer read GetID write SetID;
+    property Usuario: String read GetUsuario write SetUsuario;
+    property Nome_Completo: String read GetNome_Completo write SetNome_Completo;
+    property Email: String read GetEmail write SetEmail;
+    property Senha: String read GetSenha write SetSenha;
+    property NovoRegistro: Boolean read GetNovoRegistro write SetNovoRegistro;
+
+  end;
+
+implementation
+
+{ TMovimentacaoTelaDeLoginModel }
+
+function TMovimentacaoTelaDeLoginModel.GetEmail: String;
+begin
+  result := FEmail;
+end;
+
+function TMovimentacaoTelaDeLoginModel.GetID: integer;
+begin
+  result := FID;
+end;
+
+function TMovimentacaoTelaDeLoginModel.GetNome_Completo: String;
+begin
+  result := FNome_Completo;
+end;
+
+function TMovimentacaoTelaDeLoginModel.GetNovoRegistro: Boolean;
+begin
+  result := FNovoRegistro;
+end;
+
+function TMovimentacaoTelaDeLoginModel.GetSenha: String;
+begin
+  result := FSenha;
+end;
+
+function TMovimentacaoTelaDeLoginModel.GetUsuario: String;
+begin
+  result := FUsuario;
+end;
+
+procedure TMovimentacaoTelaDeLoginModel.SetEmail(const Value: String);
+begin
+  FEmail := Value;
+end;
+
+procedure TMovimentacaoTelaDeLoginModel.SetID(const Value: integer);
+begin
+  FID := Value;
+end;
+
+procedure TMovimentacaoTelaDeLoginModel.SetNome_Completo(const Value: String);
+begin
+  FNome_Completo := Value;
+end;
+
+procedure TMovimentacaoTelaDeLoginModel.SetNovoRegistro(const Value: Boolean);
+begin
+  FNovoRegistro := Value;
+end;
+
+procedure TMovimentacaoTelaDeLoginModel.SetSenha(const Value: String);
+begin
+  FSenha := Value;
+end;
+
+procedure TMovimentacaoTelaDeLoginModel.SetUsuario(const Value: String);
+begin
+  FUsuario := Value;
+end;
+
+end.

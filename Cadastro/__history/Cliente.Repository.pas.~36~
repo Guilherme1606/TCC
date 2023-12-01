@@ -1,0 +1,174 @@
+unit Cliente.Repository;
+
+interface
+
+uses
+  Due.Utilitarios.Base.Repository,
+  Due.Utilitarios.Base.Types,
+  Cliente.Interfaces,
+  System.generics.collections,
+  System.SysUtils,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client,
+  FireDAC.Stan.Param,
+  IdHashMessageDigest,
+  FireDAC.DApt,
+  Data.DB,
+  DueDMControle;
+
+type
+  TClientesRepository = class(TBaseRepository, IClientesRepository)
+  private
+
+  public
+    function Atualizar(aModel: IClientesModel): TValidacao;
+    function Inserir(aModel: IClientesModel): TValidacao;
+    function Excluir(aModel: IClientesModel): TValidacao;
+    function RetornaClientes: TFDDataSet;
+    function BuscaClientes(aModel: IClientesModel): TFDDataSet;
+  end;
+
+implementation
+
+{ TClientesRepository }
+
+function TClientesRepository.Atualizar(aModel: IClientesModel): TValidacao;
+var
+  FQry : TFDQuery;
+  procedure RealizaAtualizacao;
+  begin
+    FQry :=  TFDQuery.Create(nil);
+    FQry.ConnectionName :=  'DbBGM';
+    FQry.SQL.Add('UPDATE  TB_CADASTRO_CLIENTE SET CPF = :P_CPF ,NOME_COMPLETO = :P_NOMECOMPLETO,');
+    FQry.SQL.Add('ENDERECO = :P_ENDERECO,NUMERO = :P_NUMERO,BAIRRO = :P_BAIRRO,CEP = :P_CEP,   ');
+    FQry.SQL.Add('MUNICIPIO = :P_MUNICIPIO,UF = :P_UF,CONTATO = :P_CONTATO                     ');
+    FQry.SQL.Add('WHERE CPF = :P_CPF                                                           ');
+    FQry.ParamByName('P_CPF').AsString := aModel.CPF;
+    FQry.ParamByName('P_NOMECOMPLETO').AsString := aModel.Nome_Completo;
+    FQry.ParamByName('P_ENDERECO').AsString := aModel.Endereco;
+    FQry.ParamByName('P_NUMERO').AsInteger := aModel.Numero;
+    FQry.ParamByName('P_BAIRRO').AsString := aModel.Bairro;
+    FQry.ParamByName('P_CEP').AsInteger := aModel.Cep;
+    FQry.ParamByName('P_MUNICIPIO').AsString := aModel.Municipio;
+    FQry.ParamByName('P_UF').AsString := aModel.Uf;
+    FQry.ParamByName('P_CONTATO').AsString := aModel.Contato;
+    FQry.ExecSQL;
+    FreeAndNil(FQry);
+  end;
+begin
+  try
+    RealizaAtualizacao;
+    result.Valido := true;
+    result.Mensagem := 'Cliente: ' + amodel.Nome_Completo + ' atualizado com sucesso';
+  except
+    On E: Exception Do
+    Begin
+      result.Mensagem := E.Message;
+      result.Valido := False;
+    End;
+  end;
+end;
+
+
+function TClientesRepository.Excluir(aModel: IClientesModel): TValidacao;
+var
+  FQry : TFDQuery;
+  procedure RealizaExclusao;
+  begin
+    FQry :=  TFDQuery.Create(nil);
+    FQry.ConnectionName :=  'DbBGM';
+    FQry.SQL.Add('DELETE TB_CADASTRO_CLIENTE WHERE CPF = :P_CPF');
+    FQry.ParamByName('P_CPF').AsString := aModel.CPF;
+    FQry.ExecSQL;
+    FreeAndNil(FQry);
+  end;
+begin
+    try
+    RealizaExclusao;
+    result.Valido := true;
+    result.Mensagem := 'Cliente: ' + aModel.CPF + ' Excluido com sucesso';
+  except
+    On E: Exception Do
+    Begin
+      result.Mensagem := E.Message;
+      result.Valido := False;
+    End;
+  end;
+end;
+
+function TClientesRepository.Inserir(aModel: IClientesModel): TValidacao;
+var
+  FQry : TFDQuery;
+  procedure RealizaInclusao;
+  begin
+    FQry :=  TFDQuery.Create(nil);
+    FQry.ConnectionName :=  'DbBGM';
+    FQry.SQL.Add('INSERT INTO TB_CADASTRO_CLIENTE(CPF,NOME_COMPLETO,ENDERECO,NUMERO,BAIRRO,CEP,MUNICIPIO,UF,CONTATO)');
+    FQry.SQL.Add('VALUES(:P_CPF,:P_NOMECOMPLETO,:P_ENDERECO,:P_NUMERO,:P_BAIRRO,:P_CEP,:P_MUNICIPIO,:P_UF,:P_CONTATO)');
+    FQry.ParamByName('P_CPF').AsString := aModel.CPF;
+    FQry.ParamByName('P_NOMECOMPLETO').AsString := aModel.Nome_Completo;
+    FQry.ParamByName('P_ENDERECO').AsString := aModel.Endereco;
+    FQry.ParamByName('P_NUMERO').AsInteger := aModel.Numero;
+    FQry.ParamByName('P_BAIRRO').AsString := aModel.Bairro;
+    FQry.ParamByName('P_CEP').AsInteger := aModel.Cep;
+    FQry.ParamByName('P_MUNICIPIO').AsString := aModel.Municipio;
+    FQry.ParamByName('P_UF').AsString := aModel.Uf;
+    FQry.ParamByName('P_CONTATO').AsString := aModel.Contato;
+    FQry.ExecSQL;
+    FreeAndNil(FQry);
+  end;
+begin
+  try
+    RealizaInclusao;
+    result.Valido := true;
+    result.Mensagem := 'Cliente: ' + amodel.Nome_Completo + ' cadastrado com sucesso';
+  except
+    On E: Exception Do
+    Begin
+      result.Mensagem := E.Message;
+      result.Valido := False;
+    End;
+  end;
+
+end;
+
+function TClientesRepository.BuscaClientes(
+  aModel: IClientesModel): TFDDataSet;
+var
+  FQry : TFDQuery;
+begin
+  FQry :=  TFDQuery.Create(nil);
+  FQry.ConnectionName :=  'DbBGM';
+  FQry.SQL.Add('SELECT CLI.*,');
+  FQry.SQL.Add('CONTRATO.INICIO,');
+  FQry.SQL.Add('CONTRATO.ENTREGA,');
+  FQry.SQL.Add('CONTRATO.STATUS ');
+  FQry.SQL.Add('FROM TB_CADASTRO_CLIENTE           CLI');
+  FQry.SQL.Add('LEFT JOIN TB_CADASTRO_CONTRATO CONTRATO');
+  FQry.SQL.Add('ON CONTRATO.CPF = CLI.CPF');
+  FQry.SQL.Add('WHERE CLI.CPF = :P_CPF');
+  FQry.ParamByName('P_CPF').AsString := aModel.CPF;
+  FQry.open;
+  result := FQry;
+end;
+
+function TClientesRepository.RetornaClientes: TFDDataSet;
+var
+  FQry : TFDQuery;
+begin
+  FQry :=  TFDQuery.Create(nil);
+  FQry.ConnectionName :=  'DbBGM';
+  FQry.SQL.Add('SELECT CLI.*,');
+  FQry.SQL.Add('CONTRATO.INICIO,');
+  FQry.SQL.Add('CONTRATO.ENTREGA,');
+  FQry.SQL.Add('CONTRATO.STATUS');
+  FQry.SQL.Add('FROM TB_CADASTRO_CLIENTE           CLI');
+  FQry.SQL.Add('LEFT JOIN TB_CADASTRO_CONTRATO CONTRATO');
+  FQry.SQL.Add('ON CONTRATO.CPF = CLI.CPF');
+  FQry.open;
+  result := FQry;
+end;
+
+
+
+end.

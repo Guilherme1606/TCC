@@ -1,0 +1,141 @@
+unit DueConexao;
+
+interface
+  uses
+  System.StrUtils,
+  System.SysUtils,
+  FireDac.Comp.Client,
+  FireDAC.Phys.Oracle,
+  FireDac.Stan.Def,
+  FireDAC.VCLUI.Wait,
+  FireDac.Stan.Async,
+  FireDac.Stan.Option,
+  FireDac.Stan.Param,
+  FireDAC.Moni.FlatFile,
+  DueIConexao,
+  Due.Utilitarios.Base.Types;
+type
+  TConexao = class(TInterfacedObject, IConexao)
+    private
+      vcDatabase : TFDConnection;
+    public
+      procedure AtivarTrancing(var aFDMoniFlatFileClientLink : TFDMoniFlatFileClientLink);
+      procedure DesativarTrancing(var aFDMoniFlatFileClientLink : TFDMoniFlatFileClientLink);
+      function Conectar(var ADatabase: TFDConnection): Boolean; overload;
+      function Conectar(var ADatabase: TFDConnection; pMsgCustomizada: string): Boolean; overload;
+      function ReconectaBanco(AUsuario, ASenha: string): Boolean;
+      procedure PopulaPametroConexaoManual(var ADatabase: TFDConnection; pUsuario, pSenha, pServidor: string);
+      procedure PopularParametroConexao(var ADatabase: TFDConnection);
+      function DatabaseName: string;
+      function Database: TFDConnection;
+      function InTransaction: Boolean;
+      procedure Rollback; overload;
+      procedure StartTransaction; overload;
+      procedure Commit;overload;
+      procedure StartTransaction(var aValue :TEnumOrigemTransacao) ; overload;
+      procedure Rollback(var aValue :TEnumOrigemTransacao); overload;
+      procedure Commit(var aValue :TEnumOrigemTransacao);overload;
+      class function New: IConexao;
+  end;
+implementation
+
+{ TConexao }
+
+procedure TConexao.AtivarTrancing(
+  var aFDMoniFlatFileClientLink: TFDMoniFlatFileClientLink);
+begin
+//
+end;
+
+procedure TConexao.Commit;
+begin
+ //
+end;
+
+procedure TConexao.Commit(var aValue: TEnumOrigemTransacao);
+begin
+ //
+end;
+
+function TConexao.Conectar(var ADatabase: TFDConnection;
+  pMsgCustomizada: string): Boolean;
+begin
+ //
+end;
+
+function TConexao.Conectar(var ADatabase: TFDConnection): Boolean;
+begin
+ //
+end;
+
+function TConexao.Database: TFDConnection;
+begin
+ //
+end;
+
+function TConexao.DatabaseName: string;
+begin
+ //
+end;
+
+procedure TConexao.DesativarTrancing(
+  var aFDMoniFlatFileClientLink: TFDMoniFlatFileClientLink);
+begin
+ //
+end;
+
+function TConexao.InTransaction: Boolean;
+begin
+ //
+end;
+
+class function TConexao.New: IConexao;
+begin
+  result := Self.Create;
+end;
+
+procedure TConexao.PopulaPametroConexaoManual(var ADatabase: TFDConnection;
+  pUsuario, pSenha, pServidor: string);
+begin
+  //
+end;
+
+procedure TConexao.PopularParametroConexao(var ADatabase: TFDConnection);
+begin
+ //
+end;
+
+function TConexao.ReconectaBanco(AUsuario, ASenha: string): Boolean;
+begin
+  //
+end;
+
+procedure TConexao.Rollback;
+begin
+  //
+end;
+
+procedure TConexao.Rollback(var aValue: TEnumOrigemTransacao);
+begin
+  //
+end;
+
+procedure TConexao.StartTransaction;
+begin
+  if vcDatabase.InTransaction then
+     vcDatabase.Rollback;
+
+  vcDatabase.StartTransaction;
+end;
+
+procedure TConexao.StartTransaction(var aValue: TEnumOrigemTransacao);
+begin
+   aValue := otLocal;
+
+  if vcDatabase.InTransaction then
+     aValue := otExterno
+  else
+    vcDatabase.StartTransaction;
+end;
+
+end.

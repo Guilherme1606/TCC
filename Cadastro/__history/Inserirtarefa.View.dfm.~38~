@@ -1,0 +1,495 @@
+inherited InserirTarefa: TInserirTarefa
+  Left = 319
+  Top = 180
+  Caption = 'Cadastro de Tarefas'
+  ClientHeight = 424
+  ClientWidth = 500
+  DefaultMonitor = dmDesktop
+  Position = poDesigned
+  OnCreate = FormCreate
+  OnShow = FormShow
+  ExplicitWidth = 500
+  ExplicitHeight = 424
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PainelCentral: TPanel
+    Width = 500
+    Height = 367
+    ExplicitWidth = 500
+    ExplicitHeight = 367
+    object SpeedButton1: TSpeedButton
+      Left = 471
+      Top = 1
+      Width = 28
+      Height = 22
+      Cursor = crHandPoint
+      Caption = 'X'
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGray
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = SpeedButton1Click
+    end
+    object Panel2: TPanel
+      Left = 0
+      Top = 0
+      Width = 500
+      Height = 65
+      Align = alTop
+      TabOrder = 0
+      object SpeedButton4: TSpeedButton
+        Left = 471
+        Top = 0
+        Width = 28
+        Height = 22
+        Cursor = crHandPoint
+        Caption = 'X'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clGray
+        Font.Height = -11
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        OnClick = SpeedButton1Click
+      end
+    end
+    object PageControl1: TPageControl
+      Left = 0
+      Top = 65
+      Width = 500
+      Height = 302
+      ActivePage = TabSheet1
+      Align = alClient
+      TabOrder = 1
+      object TabSheet1: TTabSheet
+        Caption = 'Consultar'
+        object GridContratos: TXDBGrid
+          Left = 0
+          Top = 65
+          Width = 492
+          Height = 209
+          Align = alClient
+          DataSource = DataSource1
+          GridStyle.VisualStyle = vsXPStyle
+          TabOrder = 0
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'ID_CONTRATO'
+              Title.Caption = 'CONTRATO'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CPF'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'SERVICO'
+              Title.Caption = 'SERVI'#199'O'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'INICIO'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'ENTREGA'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'VALOR'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'STATUS'
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USU'
+              Title.Caption = 'USU'#193'RIO'
+              Visible = True
+            end>
+        end
+        object Panel3: TPanel
+          Left = 0
+          Top = 0
+          Width = 492
+          Height = 65
+          Align = alTop
+          TabOrder = 1
+          object Label1: TLabel
+            Left = 9
+            Top = 7
+            Width = 56
+            Height = 21
+            Caption = 'Projeto'
+            Color = clDefault
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clBlack
+            Font.Height = -16
+            Font.Name = 'Segoe UI'
+            Font.Style = [fsBold]
+            ParentColor = False
+            ParentFont = False
+          end
+          object SpeedButton5: TSpeedButton
+            Left = 77
+            Top = 29
+            Width = 73
+            Height = 25
+            Cursor = crHandPoint
+            Caption = 'Consultar'
+            Flat = True
+            Glyph.Data = {
+              E6040000424DE604000000000000360000002800000014000000140000000100
+              180000000000B0040000C40E0000C40E00000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFEDE3EAA16896762365A16996F4EFF3FFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FCFBFB7725656D145C864E7A6B1359A16995FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFECE1E980367271
+              1A5F97788EADB4A8874D79772366FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCC7D7
+              C4A2BCAD7EA2A8769DB184A6CFB4C9F5EFF4EFE6ED7C2E6C6E105B9B8392ADB5
+              A897798E6D135BA16A95FFFFFFFFFFFFFFFFFFF8F4F89D6492701A6769096A63
+              006E62006F64006E6C116A813677853C77721C6194728AAEB8AA9B8392711A5F
+              772565EDE2EBFFFFFFFFFFFFD6BED15F00506E1565905A55AC9B37C0C623C5D0
+              1EBEC125A0814383425E721B6B834176A7A7A29470896C105A823673FCFCFCFF
+              FFFFFFFFFFE6D8E26F1963792A67A48940BEC225BAB82AB6B12DB6AF2EB7B22C
+              BBBC27BBBA29986E4C701670834176721C607C2F6DECE1EAFFFFFFFFFFFFF9F6
+              F889437B701968AE9E37BBBC27B6B02AB4AE2AB5AF2AB4AF2AB5AF2AB4AE2BB7
+              B22ABCBE26986E4D721B6C853C77EFE6EDFFFFFFFFFFFFFFFFFFD5BDCF650661
+              9B754ABDC121B4AE29BCB539C2BA43C6BE4AC8BD4BC5BC49BFB83EBAB234B4B0
+              28BBBA2685435E813677F6EFF3FFFFFFFFFFFFFFFFFFA6729E6D1467B5B227BA
+              B530CBC051D2C65FD2C65FD2C760D3C760D2C760D1C65ED1C65EC7BD4CB8BA23
+              9E7F406C106AD0B5CAFFFFFFFFFFFFFFFFFF7A2A72864A56C5C33AD7CB6BD3C8
+              6AD0C558D1C65DD0C55CD0C55CD1C65CD1C65DD1C65DD2C761D3C85EC2C52C62
+              006BB184A7FFFFFFFFFFFFFFFFFF74216C945D5ED5CD54DFDCB1EDF0FFCBBD3C
+              D1C65ED1C65DD1C65DD1C65DD1C65DD1C65DD1C55CD1C65FDFE54E5E0066A977
+              9EFFFFFFFFFFFFFFFFFF76256C935967D4CD53DFDBB0F0F5FFCDC04FD0C558D1
+              C65DD1C65DD1C65DD1C65DD1C65DD0C55DD1C55DDFE05C5D0063AF7FA3FFFFFF
+              FFFFFFFFFFFF935289782864D5CE54D6D084EDEEFDDFD9B0CDC14AD0C558D0C5
+              5DD1C65DD1C65DD1C65DD0C55DD5CE5CC3AD5E640664C5A3BCFFFFFFFFFFFFFF
+              FFFFBD94B462035EC4AF5DD5CF53E6E4D7EDEFFEDEDBB1CFC24FCABC3CCFC458
+              D1C65DD1C55DD0C55DDCD9599863656E1865DBC8D7FFFFFFFFFFFFFFFFFFF2EB
+              F177276A782868D5CF58CEC43FE7E4D7ECEEFDF1F5FFEDF0FFD2C867D0C55AD0
+              C55CD8D35AB798616C13629E6592FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB991B0
+              660B5B935867D5CF58D5CE53D7D185E0DBAFDFDBB0D1C661D2C75BDBDA59C5B2
+              5E7929685F004FF8F5F8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA0689567
+              0B5B772768C4AF5DD5CD54D4CD52D4CD53D5D059D3CA5CAA80636F18656E1960
+              D6BFD1FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB991B17727
+              6A62035E7828659358669960668F52666B116362045B89437CE6D8E3FFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2EBF0BD95B4
+              93548977256D73206A7A296FA7739ED5BDD0FAF7F9FFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFF}
+            OnClick = SpeedButton5Click
+          end
+          object SpeedButton6: TSpeedButton
+            Left = 464
+            Top = 1
+            Width = 26
+            Height = 25
+            Cursor = crHandPoint
+            Flat = True
+            Glyph.Data = {
+              E6040000424DE604000000000000360000002800000014000000140000000100
+              180000000000B0040000C40E0000C40E00000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAA
+              AAAAB7B7B7FFFFFFFFFFFFFFFFFFDADADABCBCBCBABABAD9D9D9FFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0505051717
+              17FFFFFF7474740000000000000000000000000000000000006F6F6FFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1515151111110B0B0B
+              0000001E1E1E787878AAAAAAACACAC7B7B7B1C1C1C000000000000CDCDCDFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF171717000000000000888888FF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB1B1B1000000000000CDCDCDFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0E0E0E000000000000000000000000F6F6
+              F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6F6F6000000000000FFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFC1C1C18282828888888585859D9D9DFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB1B1B1000000707070FFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFF1B1B1B000000FFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFF7A7A7A000000D9D9D9FFFFFFFFFFFFE1E1E10F0F0FE4
+              E4E4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFA5A5A5000000B6B6B6FFFFFFFFFFFFB6B6B6000000A8A8A8FFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFE3E3E30E0E0EE2E2E2FFFFFFFFFFFFD7D7D70000007E7E7EFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000001D1D1DFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFF6E6E6E000000ADADADFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFF9D9D9D858585888888828282C2C2C2FFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFF000000000000F4F4F4FFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFF5F5F50000000000000000000000000E0E0EFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFCACACA000000000000AEAEAEFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFF878787000000000000171717FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFCCCCCC0000000000001C1C1C7E7E7EAFAFAFAAAAAA7878781D1D
+              1D0000000B0B0B111111151515FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFF6F6F6F000000000000000000000000000000000000737373
+              FFFFFF171717050505FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFD8D8D8B8B8B8BBBBBBD9D9D9FFFFFFFFFFFFFFFFFFB5
+              B5B5AAAAAAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFF}
+            OnClick = SpeedButton6Click
+          end
+          object EdtConsulta: TEdit
+            Left = 14
+            Top = 30
+            Width = 52
+            Height = 28
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -15
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            MaxLength = 4
+            NumbersOnly = True
+            ParentFont = False
+            TabOrder = 0
+          end
+        end
+      end
+      object TabSheet2: TTabSheet
+        Caption = 'Tarefa'
+        ImageIndex = 1
+        object LabelUsuario: TLabel
+          Left = 88
+          Top = 33
+          Width = 158
+          Height = 21
+          Caption = 'Usu'#225'rio Respons'#225'vel'
+          Color = clDefault
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label2: TLabel
+          Left = 8
+          Top = 33
+          Width = 56
+          Height = 21
+          Caption = 'Projeto'
+          Color = clDefault
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 269
+          Top = 33
+          Width = 47
+          Height = 21
+          Caption = 'Status'
+          Color = clDefault
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+        end
+        object EdtNomeAnalista: TComboBox
+          Left = 88
+          Top = 60
+          Width = 158
+          Height = 28
+          BevelKind = bkFlat
+          BevelOuter = bvRaised
+          Style = csDropDownList
+          CharCase = ecUpperCase
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          TextHint = 'Nome do analista'
+        end
+        object EdtContrato: TComboBox
+          Left = 9
+          Top = 60
+          Width = 64
+          Height = 28
+          BevelKind = bkFlat
+          BevelOuter = bvRaised
+          Style = csDropDownList
+          CharCase = ecUpperCase
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          MaxLength = 4
+          ParentFont = False
+          TabOrder = 1
+        end
+        object EdtStatus: TComboBox
+          Left = 269
+          Top = 60
+          Width = 132
+          Height = 28
+          BevelKind = bkFlat
+          BevelOuter = bvRaised
+          Style = csDropDownList
+          CharCase = ecUpperCase
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+          TextHint = 'Status projeto'
+          Items.Strings = (
+            'EM ANDAMENTO'
+            'SENDO REVISIONADO'
+            'FINALIZADO'
+            'CANCELADO')
+        end
+      end
+    end
+  end
+  inherited PainelBaixo: TPanel
+    Top = 367
+    Width = 500
+    ExplicitTop = 367
+    ExplicitWidth = 500
+    object Panel1: TPanel
+      Left = 0
+      Top = 1
+      Width = 500
+      Height = 56
+      Align = alBottom
+      BevelOuter = bvNone
+      ParentBackground = False
+      TabOrder = 0
+      object SpeedButton2: TSpeedButton
+        Left = 158
+        Top = 13
+        Width = 171
+        Height = 25
+        Cursor = crHandPoint
+        Caption = 'Atualizar Projeto'
+        Flat = True
+        Glyph.Data = {
+          E6040000424DE604000000000000360000002800000014000000140000000100
+          180000000000B0040000C40E0000C40E00000000000000000000FFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFDBC6D7AB78A08D457F7F2C6E7F2C6E8E457FAB78
+          A0DCC6D7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFDAC5D580327073105F791B67733F666E52656E5265723F667A1B6772105F
+          803170D8C1D3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB080A67011
+          5D792768617A5F4DB7554ABE544AC0544AC0544ABE544DB75562785F79276970
+          125DB080A6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAF80A5710E5D7248674CBB54
+          4ABE544DB6554DB5554DB5554DB5554DB5554DB6554ABE544CBA55724667710E
+          5DB081A7FFFFFFFFFFFFFFFFFFD9C3D570115D7248674ABF544CB7554DB3554C
+          B3554CB4544CB2544CB2544CB2544CB2554DB3554CB7554ABF5473466770115D
+          DAC4D5FFFFFFFFFFFF80306F7928684BBB544CB6544DB55552BF5956CD5D5CC1
+          6059D6605BCE615ACC5F57C65D52BE594EB5554CB6544BBA55792769813270FF
+          FFFFDAC5D673105F617B5F49BC5353C05A59CE6057DE5F715F6880176D669664
+          56DA5E5ACC605ACC605BCD605ACD6053BF5A4ABC5361785F72105FDCC6D7AA78
+          A07A1B674CB55457C95D5ACF6057D95F715F6880196D7D276C81166D639B6457
+          D95E59CC5F5ACC605ACC605BCE6057C95D4CB554791A67AB78A08D437E713E65
+          54CE5C5ACE6057D85F725A6882116E7061685ACB5F7A316C80186D65976457D9
+          5E59CC605ACC605ACC605ACE6053CF5C713D658D457F7E2B6E71566757D95F5A
+          CC6056DB5E7D276D725A6857D95E58D35F5AC9607D276C80196D639C6356DA5E
+          59CC5F5ACC605ACC6057D95F715667802C6F7E2B6E72586856D95E5ACC605ACC
+          6056DB5E57D85F59CC5F5ACC6058D25F5ACA607B316B81146D65966457D85F59
+          CC5F59CC6057D95E725868802C6F8D437E74446757D65E59CC605ACC605ACC60
+          5ACC605ACC605ACC605ACC6058D25F5BC6607B2E6C80196D65966458D35F59CC
+          5F58D65F7443678E447FAA77A0781A6658CF5F59CE5F5ACC605ACC605ACC605A
+          CC605ACC605ACC605ACC6058D25F5AC7607C2C6B81146E56DD5E59CE5F59CF5F
+          791966AB78A1DAC6D6720E5F68876557D65F5ACC605ACC605ACC605ACC605ACC
+          605ACC605ACC605ACC6058D15F5BC56060AF6259D05F57D75F698765710E5EDC
+          C7D7FFFFFF7F306F7A276958D35E59CF5F5ACC605ACC605ACC605ACC605ACC60
+          5ACC605ACC605ACC6059CE5F59D05F59CF5F58D35F792669803270FFFFFFFFFF
+          FFD8C2D470105D754E6956D85F59CF5F5ACC605ACC605ACC605ACC605ACC605A
+          CC605ACC605ACC6059CF5F57D75F744D6970115DDAC5D6FFFFFFFFFFFFFFFFFF
+          AE7FA5700D5D754D6958D45F57D65F59CE5F59CC5F59CC5F59CC5F59CC5F59CE
+          5F57D65F58D35F754D69700C5CB082A7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAF
+          7FA570105D79276868886559CF5F57D65F57D95F57D95F57D65F59CF5F688765
+          79276970105DB082A6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDAC4
+          D57F306F720E5F781A66744467725968725968744467791A66710E5E803170D7
+          C1D3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          DAC5D7AA779F8C437E7F2A6E7F2B6E8D437FAB78A0DBC7D7FFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFF}
+        OnClick = SpeedButton2Click
+      end
+    end
+  end
+  object ConsultaContratos: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    Left = 316
+    Top = 185
+    object ConsultaContratosID_CONTRATO: TIntegerField
+      FieldName = 'ID_CONTRATO'
+    end
+    object ConsultaContratosCPF: TStringField
+      FieldName = 'CPF'
+      Size = 11
+    end
+    object ConsultaContratosSERVICO: TStringField
+      FieldName = 'SERVICO'
+      Size = 25
+    end
+    object ConsultaContratosINICIO: TStringField
+      FieldName = 'INICIO'
+      Size = 9
+    end
+    object ConsultaContratosENTREGA: TStringField
+      FieldName = 'ENTREGA'
+      Size = 9
+    end
+    object ConsultaContratosVALOR: TFloatField
+      FieldName = 'VALOR'
+    end
+    object ConsultaContratosSTATUS: TStringField
+      FieldName = 'STATUS'
+      Size = 12
+    end
+    object ConsultaContratosUSUARIO_RESPONSAVEL: TStringField
+      FieldName = 'USUARIO_RESPONSAVEL'
+      Size = 10
+    end
+    object ConsultaContratosUSUARIO: TStringField
+      FieldName = 'USUARIO'
+      Size = 10
+    end
+    object ConsultaContratosUSU: TStringField
+      FieldName = 'USU'
+      Size = 10
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = ConsultaContratos
+    Left = 260
+    Top = 185
+  end
+end

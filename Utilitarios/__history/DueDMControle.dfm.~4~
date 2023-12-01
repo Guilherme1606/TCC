@@ -1,0 +1,17 @@
+object DataModule1: TDataModule1
+  OldCreateOrder = False
+  Height = 291
+  Width = 426
+  object FDConnection1: TFDConnection
+    ConnectionName = 'DbBGM'
+    Params.Strings = (
+      'Database=ORA11G64'
+      'User_Name=BBTT230209'
+      'Password=BBTT230209'
+      'DriverID=Ora')
+    Connected = True
+    LoginPrompt = False
+    Left = 48
+    Top = 16
+  end
+end

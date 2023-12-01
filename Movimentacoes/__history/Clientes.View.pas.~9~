@@ -1,0 +1,61 @@
+unit Clientes.View;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,
+  Vcl.Grids, XDBGrids, Praxio.XGrid, JvExControls, JvXPCore, JvXPButtons,
+  Praxio.Botoes.SimpleButton,FormularioBase.View;
+
+type
+  TClientesView = class(TFormularioBase)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    PageControl: TPageControl;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    Label1: TLabel;
+    Edit1: TEdit;
+    Label4: TLabel;
+    Edit4: TEdit;
+    Label7: TLabel;
+    Edit7: TEdit;
+    Label2: TLabel;
+    Edit2: TEdit;
+    Label5: TLabel;
+    Edit5: TEdit;
+    Label3: TLabel;
+    Edit3: TEdit;
+    Label6: TLabel;
+    Edit6: TEdit;
+    Panel3: TPanel;
+    TabSheet3: TTabSheet;
+    Edit8: TEdit;
+    Edit9: TEdit;
+    Label8: TLabel;
+    Label9: TLabel;
+    Edit11: TEdit;
+    PraxioXGrid1: TPraxioXGrid;
+    Panel4: TPanel;
+    Label10: TLabel;
+    Edit12: TEdit;
+    Edit13: TEdit;
+    Label11: TLabel;
+    SimpleButton1: TSimpleButton;
+    SimpleButton2: TSimpleButton;
+    Label12: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ClientesView: TClientesView;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,62 @@
+unit Contrato.UseCase;
+
+interface
+uses
+  Due.Utilitarios.Base.UseCase,
+  Due.Utilitarios.Base.Types,
+  Contrato.Interfaces,
+  DueIConexao,
+  Due.Utilitarios.Base.Model,
+  Vcl.Dialogs,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  TContratosUseCase = class(TBaseUseCase, IContratosUseCase)
+  private
+    FRepository: IContratosRepository;
+    FConexao: IConexao;
+  public
+    function Gravar(aModel: IContratosModel): TValidacao;
+    function RetornaContratos: TFDDataSet;
+    function BuscaContratos(aModel: IContratosModel): TFDDataSet;
+    constructor Create(aRepository: IContratosRepository;
+      aConexao: IConexao);
+
+  end;
+implementation
+
+{ TContratosUseCase }
+
+function TContratosUseCase.BuscaContratos(aModel: IContratosModel): TFDDataSet;
+begin
+  result := FRepository.BuscaContratos(aModel);
+end;
+
+constructor TContratosUseCase.Create(aRepository: IContratosRepository;
+  aConexao: IConexao);
+begin
+  FRepository := aRepository;
+  FConexao := aConexao;
+end;
+
+function TContratosUseCase.Gravar(aModel: IContratosModel): TValidacao;
+begin
+  FConexao.StartTransaction(FOrigemTransacao);
+  If aModel.NovoRegistro Then
+    result := FRepository.Inserir(aModel)
+  Else
+    result := FRepository.Atualizar(aModel);
+
+  if result.Valido then
+    FConexao.Commit
+  else
+    FConexao.Rollback;
+end;
+
+function TContratosUseCase.RetornaContratos: TFDDataSet;
+begin
+  result := FRepository.RetornaContratos;
+end;
+
+end.

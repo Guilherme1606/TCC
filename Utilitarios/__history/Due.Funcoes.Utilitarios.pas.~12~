@@ -1,0 +1,33 @@
+unit Due.Funcoes.Utilitarios;
+
+interface
+
+uses
+  System.Classes, Vcl.Forms, System.SysUtils;
+
+procedure AbrirTela(aForm: TForm);
+//procedure AbrirTela(aForm: TComponentClass); overload;
+
+implementation
+
+procedure AbrirTela(aForm: TForm);
+begin
+  Application.Create(aForm);
+  try
+    Tform(aForm).ShowModal;
+  finally
+    Freeandnil(Tform(aForm));
+  end;
+end;
+
+//procedure AbrirTela(aForm: TComponentClass); overload;
+//begin
+//  try
+//    aForm.Create(nil);
+//    aForm.ShowModal;
+//  finally
+//    Freeandnil(aForm)
+//  end;
+//end;
+
+end.

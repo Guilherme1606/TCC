@@ -1,0 +1,42 @@
+inherited ClientesView: TClientesView
+  Left = 318
+  Top = 190
+  BorderIcons = []
+  Caption = 'Clientes'
+  ClientHeight = 433
+  ClientWidth = 510
+  DefaultMonitor = dmDesktop
+  Position = poDesigned
+  ExplicitWidth = 510
+  ExplicitHeight = 433
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited PainelCentral: TPanel
+    Width = 510
+    Height = 376
+    ExplicitWidth = 498
+    ExplicitHeight = 337
+    object SpeedButton1: TSpeedButton
+      Left = 486
+      Top = 3
+      Width = 28
+      Height = 22
+      Cursor = crHandPoint
+      Caption = 'X'
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clGray
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = SpeedButton1Click
+    end
+  end
+  inherited PainelBaixo: TPanel
+    Top = 376
+    Width = 510
+    ExplicitTop = 337
+    ExplicitWidth = 498
+  end
+end

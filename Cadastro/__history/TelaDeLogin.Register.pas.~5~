@@ -1,0 +1,25 @@
+unit TelaDeLogin.Register;
+
+interface
+
+uses
+  Spring.container;
+
+procedure RegisterTypes(Const container: TContainer);
+
+implementation
+
+uses
+  TelaDeLogin.Repository,
+  TelaDeLogin.UseCase,
+  TelaDeLogin.Model;
+
+procedure RegisterTypes(Const container: TContainer);
+begin
+  container.RegisterType<TTelaDeLoginRepository>;
+  container.RegisterType<TTelaDeLoginUseCase>;
+  container.RegisterType<TTelaDeLoginModel>;
+  container.Build;
+end;
+
+end.

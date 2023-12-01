@@ -1,0 +1,60 @@
+unit Cliente.Interfaces;
+
+interface
+uses
+  Due.Utilitarios.Base.Types,
+  system.generics.Collections,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+type
+  IClientesModel = interface
+    ['{B5782108-9C03-4F38-A492-86C09E032F78}']
+    function GetCPF: String;
+    function GetNome_Completo: String;
+    function GetEndereco: String;
+    function GetNumero: Integer;
+    function GetBairro: String;
+    function GetCep: Integer;
+    function GetMunicipio: String;
+    function GetUF: String;
+    function GetContato: String;
+    function GetNovoRegistro: Boolean;
+
+    procedure SetCPF(const Value: String);
+    procedure SetNome_Completo(const Value: String);
+    procedure SetEndereco(const Value: String);
+    procedure SetNumero(const Value: Integer);
+    procedure SetBairro(const Value: String);
+    procedure SetCep(Const Value: Integer);
+    procedure SetMunicipio(const Value: String);
+    procedure SetUF(const Value: String);
+    procedure SetContato(const Value: String);
+    procedure SetNovoRegistro(const Value: Boolean);
+
+    property CPF: String read GetCPF write SetCPF;
+    property Nome_Completo: String read GetNome_Completo write SetNome_Completo;
+    property Endereco: String read GetEndereco write SetEndereco;
+    property Numero: Integer read GetNumero write SetNumero;
+    property Bairro: String read GetBairro write SetBairro;
+    property Cep: Integer read GetCep write SetCep;
+    property Municipio: String read GetMunicipio write SetMunicipio;
+    property UF: String read GetUF write SetUF;
+    property Contato: String read GetContato write SetContato;
+    property NovoRegistro: Boolean read GetNovoRegistro write SetNovoRegistro;
+  end;
+
+  IClientesUseCase = interface
+    ['{8D89B2BA-91B4-4F1F-922A-6176FD3DCCA8}']
+    function Gravar(aModel: IClientesModel): TValidacao;
+    function Excluir(aModel: IClientesModel): TValidacao;
+  end;
+
+  IClientesRepository = interface
+    ['{7F9554E3-B9BA-45A6-9965-8BDB91C3A696}']
+    function Atualizar(aModel: IClientesModel): TValidacao;
+    function Inserir(aModel: IClientesModel): TValidacao;
+    function Excluir(aModel: IClientesModel): TValidacao;
+  end;
+implementation
+
+end.

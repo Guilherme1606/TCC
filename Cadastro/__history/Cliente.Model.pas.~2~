@@ -1,0 +1,46 @@
+unit Cliente.Model;
+
+interface
+
+uses
+  Cliente.Interfaces,
+  Due.Utilitarios.Base.Model;
+
+type
+  TClientesModel = class(TBaseModel, IClientesModel)
+  private
+    FCPF: String;
+    FNome_Completo: String;
+    FEndereco: String;
+    FEmail: String;
+    FSenha: String;
+    FNovoRegistro: Boolean;
+
+    function GetCPF: String;
+    function GetNome_Completo: String;
+    function GetEndereco: String;
+    function GetEmail: String;
+    function GetSenha: String;
+    function GetNovoRegistro: Boolean;
+
+    procedure SetCPF(const Value: String);
+    procedure SetNome_Completo(const Value: String);
+    procedure SetEndereco(const Value: String);
+    procedure SetNumero(const Value: Integer);
+    procedure SetBairro(const Value: String);
+    procedure SetSenha(const Value: String);
+    procedure SetNovoRegistro(const Value: Boolean);
+  public
+    property CPF: String read GetCPF write SetCPF;
+    property Nome_Completo: String read GetNome_Completo write SetNome_Completo;
+    property Endereco: String read GetEndereco write SetEndereco;
+    property Numero: Integer read GetNumero write SetNumero;
+    property Bairro: String read GetBairro write SetBairro;
+    property Senha: String read GetSenha write SetSenha;
+    property NovoRegistro: Boolean read GetNovoRegistro write SetNovoRegistro;
+
+  end;
+
+implementation
+
+end.
